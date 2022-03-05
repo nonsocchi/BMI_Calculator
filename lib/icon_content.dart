@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
+const labelTextStyle = TextStyle(
+  fontSize: 18.0,
+  color: Color(0xFF8D8E98),
+);
+
 class IconContentWidget extends StatelessWidget {
   final IconData cardIcon;
-  final String cardText;
+  final String label;
   const IconContentWidget({
     Key? key,
     required this.cardIcon,
-    required this.cardText,
+    required this.label,
   }) : super(key: key);
 
   @override
@@ -22,11 +27,8 @@ class IconContentWidget extends StatelessWidget {
           height: 15.0,
         ),
         Text(
-          cardText,
-          style: const TextStyle(
-            fontSize: 18.0,
-            color: Color(0xFF8D8E98),
-          ),
+          label,
+          style: labelTextStyle,
         ),
       ],
     );
