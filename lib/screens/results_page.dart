@@ -1,10 +1,22 @@
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/components/bottom_button.dart';
+import 'package:bmi_calculator/screens/input_page.dart';
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../components/reusable_card.dart';
+
+import '../components/constants.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({Key? key}) : super(key: key);
+  const ResultsPage({
+    Key? key,
+    required this.resultText,
+    required this.bmiResult,
+    required this.interpretation,
+  }) : super(key: key);
+
+  final String resultText;
+  final String bmiResult;
+  final String interpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +29,14 @@ class ResultsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Expanded(
-            child: Text(
-              'Your Result',
-              style: kTitleTextStyle,
-              textAlign: TextAlign.center,
+          Expanded(
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: const Text(
+                'Your Result',
+                style: kTitleTextStyle,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
           Expanded(
@@ -31,23 +46,29 @@ class ResultsPage extends StatelessWidget {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
-                    'OVERWEIGHT',
+                    resultText.toUpperCase(),
                     style: kResultTextStyle,
                   ),
                   Text(
-                    '18.3',
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    kLowBMIResult,
+                    interpretation,
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   )
                 ],
               ),
             ),
+          ),
+          BottomButton(
+            buttonText: 'RE-CALCULATE',
+            toPage: () {
+              Navigator.pop(context);
+            },
           )
         ],
       ),
