@@ -159,7 +159,7 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'HEIGHT',
+                          'WEIGHT',
                           style: kLabelTextStyle,
                         ),
                         Text(
